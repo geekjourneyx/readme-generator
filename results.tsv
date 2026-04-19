@@ -3,3 +3,4 @@ timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
 2026-04-19T15:10	2c784cd	github-readme	56	64	keep	D3边界条件	添加Phase 0.5模式识别+4条fallback路径，D3从4→7	dry_run
 2026-04-19T15:20	9dbd4ed	github-readme	64	71	keep	D5指令具体性	重写Phase 2模板变量替换指南，列出10个{{VAR}}占位符+主色选择表，D5从5→8	dry_run
 2026-04-19T15:30	38268db	github-readme	71	75	keep	D4检查点	在Phase 2后添加信息图确认点，Phase 4后添加元信息确认点，D4从4→7	dry_run
+2026-04-19T15:19	eac4d94	github-readme	75	80	keep	D5+D2	新增Phase 1.5 getdesign风格选择，Token提取表+claude默认值	dry_run
