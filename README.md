@@ -35,7 +35,7 @@
 | 大段文字无视觉辅助 | 3 张 16:9 信息图精准插入 |
 | 缺失 GitHub Description/Topics | 提供 SEO 优化的元信息建议 |
 | Emoji 装饰标题（降低专业度） | 零 Emoji 堆砌，排版驱动设计 |
-| 作者信息格式混乱 | 标准化表格，正确的 emoji 代码 |
+| 作者信息格式混乱 | 标准化表格，纯文字标签，零 emoji |
 
 ---
 
@@ -140,10 +140,10 @@ github-readme/
 
 | | |
 |:---|:---|
-| :globe_with_meridians: 个人主页 | [geekjourney.dev](https://geekjourney.dev) |
-| :octocat: GitHub | [geekjourneyx](https://github.com/geekjourneyx) |
-| :bird: Twitter | [@seekjourney](https://x.com/seekjourney) |
-| :speech_balloon: 公众号 | 微信搜「极客杰尼」 |
+| 个人主页 | [geekjourney.dev](https://geekjourney.dev) |
+| GitHub | [geekjourneyx](https://github.com/geekjourneyx) |
+| Twitter | [@seekjourney](https://x.com/seekjourney) |
+| 公众号 | 微信搜「极客杰尼」 |
 
 ---
 
