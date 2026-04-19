@@ -132,50 +132,63 @@ author:
 
 ### 生成流程（每张图）
 
+**Step 1：从 templates/ 读取模板，替换占位符，写入 /tmp/**
+
+`templates/` 目录下有三个基础模板，包含 `{{PROJECT_NAME}}`、`{{PRIMARY_COLOR}}`、`{{TAGLINE}}` 等占位符。操作方式：
+
 ```bash
-# Step 1: 将 HTML 写入临时文件
-cat > /tmp/readme-banner.html << 'EOF'
-[HTML 内容]
-EOF
-
-# Step 2: 通过 Node.js Playwright 截图
-node scripts/gen_infographic.mjs /tmp/readme-banner.html assets/banner.png 1920 1080
-
-# Step 3: 删除临时 HTML（避免污染仓库）
-rm /tmp/readme-banner.html
+# 读取 templates/banner.html 内容后，将以下占位符替换为实际值，写入 /tmp/
+# {{PROJECT_NAME}}     → 实际项目名（如 "codeflow"）
+# {{TAGLINE}}          → 一句话标语
+# {{PRIMARY_COLOR}}    → 主色 hex（如 "#0ea5e9"）
+# {{CATEGORY}}         → 项目类别（如 "CLI Tool" / "Agent Skill"）
+# {{PLATFORM}}         → 运行平台（如 "Node.js" / "Python"）
+# {{LANGUAGE}}         → 主要语言（如 "TypeScript"）
+# {{VERSION_INFO}}     → 版本信息（如 "v1.0 · 2026"）
+# {{TECH_CARDS}}       → 用 card HTML 片段替换，每条技术点一个 .tech-card div
+# {{FEATURE_CARDS}}    → 功能卡片 HTML，每个功能一个 .card div（含 --accent 颜色变量）
+# {{FEATURE_COUNT}}    → 功能数量数字（如 "6"）
+# {{PIPELINE_STAGES}}  → 流程阶段 HTML，交替 .stage 和 .arrow div
+# {{STAGE_COUNT}}      → 阶段数量（如 "5"）
 ```
 
-> ⚠️ **关键：** 不要把 HTML 文件提交到 git。临时文件写到 `/tmp/`，截图结果保存到 `assets/`。
+**Step 2：截图**
 
-### 三张信息图规格
+```bash
+node scripts/gen_infographic.mjs /tmp/readme-banner.html assets/banner.png 1920 1080
+node scripts/gen_infographic.mjs /tmp/readme-features.html assets/features.png 1920 1080
+node scripts/gen_infographic.mjs /tmp/readme-workflow.html assets/workflow.png 1920 1080
+```
 
-**1. Banner（16:9，1920×1080）**
-- 用途：README 顶部 hero 图，第一视觉冲击
-- 内容：项目名 + 标语 + 核心技术标签 + 视觉背景
-- 设计要点：深色/渐变背景，白色大字，右侧技术徽章列表
-- 参考模板：`templates/banner.html`
+**Step 3：清理临时文件**
 
-**2. Features（16:9，1920×1080）**
-- 用途：核心功能可视化，替代枯燥的 bullet list
-- 内容：3-6 个功能卡片，每个卡片含图标 + 标题 + 一行描述
-- 设计要点：卡片网格布局，每个卡片有功能色标识
-- 参考模板：`templates/features.html`
+```bash
+rm /tmp/readme-banner.html /tmp/readme-features.html /tmp/readme-workflow.html
+```
 
-**3. Workflow/Pipeline（16:9，1920×1080）**
-- 用途：工作流程可视化，让用户快速理解运作方式
-- 内容：4-6 个阶段的流程图，箭头连接，每阶段有小标题
-- 设计要点：横向流程，阶段编号，连接箭头
-- 参考模板：`templates/workflow.html`
+> ⚠️ **关键：** HTML 临时文件只写 `/tmp/`，截图 PNG 保存到 `assets/`。不要把 HTML 提交到 git（`.gitignore` 已包含 `*.html` 排除规则）。
+
+### 主色选择指南
+
+根据项目性质选择主色，三张图保持统一：
+
+| 项目类型 | 推荐主色 | Hex |
+|----------|----------|-----|
+| 开发工具 / CLI | 科技蓝 | `#0ea5e9` |
+| AI / Agent | 紫色 | `#a78bfa` |
+| 出行 / 生活 | 琥珀金 | `#f59e0b` |
+| 效率 / 自动化 | 翠绿 | `#10b981` |
+| 设计 / 创意 | 玫瑰 | `#f43f5e` |
+| 数据 / 分析 | 青色 | `#06b6d4` |
 
 ### 设计系统（保持一致）
 
 参考 `references/design-system.md`，默认采用：
-- **背景色**：`#0d1117`（GitHub 深色）或 `#1a1a2e`（深蓝）
-- **主色**：项目相关，如科技蓝 `#0ea5e9`、活力橙 `#f59e0b`、自然绿 `#10b981`
-- **字体**：`Inter`（无衬线，西文）+ `Noto Sans SC`（中文）
-- **圆角**：`12px`，**阴影**：`0 4px 24px rgba(0,0,0,0.3)`
+- **背景色**：`#0d1117`（GitHub 深色）
+- **字体**：`Inter`（西文）+ `Noto Sans SC`（中文），均通过 Google Fonts CDN 加载
+- **圆角**：`12px`，卡片边框：`1px solid #21262d`
 
-> 三张图的配色主题必须统一——同一主色、同一背景风格。
+> 三张图的主色 `{{PRIMARY_COLOR}}` 必须填写相同的值——视觉一致性是专业度的核心。
 
 ---
 
