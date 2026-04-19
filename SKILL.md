@@ -190,6 +190,26 @@ rm /tmp/readme-banner.html /tmp/readme-features.html /tmp/readme-workflow.html
 
 > 三张图的主色 `{{PRIMARY_COLOR}}` 必须填写相同的值——视觉一致性是专业度的核心。
 
+### ✅ Phase 2 检查点（生成后必须暂停）
+
+三张 PNG 生成完毕后，向用户汇报：
+
+```
+✅ 信息图生成完成：
+  - assets/banner.png   (1920×1080, ~500KB)
+  - assets/features.png (1920×1080, ~120KB)
+  - assets/workflow.png (1920×1080, ~100KB)
+
+请在你的文件管理器中预览这三张图，确认：
+1. 项目名/标语是否正确？
+2. 配色是否符合项目风格？
+3. 功能卡片的描述是否准确？
+
+确认后输入「继续」进入 README 组装。如需调整，告诉我哪里需要修改。
+```
+
+不要在用户确认之前进入 Phase 3。
+
 ---
 
 ## Phase 3: README 组装
@@ -305,6 +325,23 @@ AI Agent Skill for generating beautifully typeset travel guidebook PDFs with par
 ```
 agent-skill  claude-code  travel  pdf-generation  playwright
 nodejs  mcp  copilot-cli  ai-agent  itinerary
+```
+
+### ✅ Phase 4 检查点（给出建议后暂停）
+
+生成元信息建议后，向用户展示并等待确认：
+
+```
+📋 GitHub 元信息建议（请在 repo Settings 中填写）：
+
+Description:
+  [生成的英文描述，≤160字符]
+
+Topics（在 repo 主页点击 ⚙️ 添加）:
+  [tag1]  [tag2]  [tag3]  ...
+
+以上建议是否合适？如需调整描述或 Topics，直接告诉我。
+确认后继续 → Git 提交（Phase 5）。
 ```
 
 ---
