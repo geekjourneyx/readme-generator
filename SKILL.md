@@ -1,5 +1,5 @@
 ---
-name: github-readme
+name: readme-generator
 description: 为 GitHub 项目生成符合最佳实践的专业 README.md，包含 SEO/GEO 优化标题、16:9 信息图三件套（banner/features/workflow）、结构化作者信息、MIT 许可证、GitHub description 和 Topics 推荐。当用户说「帮我写 README」「生成 README」「README 最佳实践」「README 信息图」「GitHub 项目首页」「readme maker」「readme 生成」「写一个专业的 README」「项目文档」「开源说明」时必须使用此 skill。也适用于 README 已存在但需要重构、补充信息图、添加作者信息、优化排版的场景。
 ---
 

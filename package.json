@@ -1,5 +1,5 @@
 {
-  "name": "github-readme",
+  "name": "readme-generator",
   "version": "1.0.0",
   "description": "AI Agent Skill for generating professional README.md with SEO/GEO optimization and 16:9 infographics",
   "scripts": {

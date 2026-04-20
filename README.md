@@ -67,7 +67,7 @@ npx playwright install chromium
 ### 安装 Skill
 
 ```bash
-npx skills add https://github.com/geekjourneyx/github-readme
+npx skills add https://github.com/geekjourneyx/readme-generator
 ```
 
 > 安装后在对话中说「帮我写 README」即可触发。支持 Copilot CLI 和 Claude Code。
@@ -107,7 +107,7 @@ project/
 ## 项目结构
 
 ```
-github-readme/
+readme-generator/
 ├── SKILL.md                     # Skill 定义（Agent 读取）
 ├── scripts/
 │   └── gen_infographic.mjs      # Playwright 截图工具
