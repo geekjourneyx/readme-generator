@@ -1,6 +1,6 @@
 <div align="center">
 
-# GitHub README Maker
+# GitHub README Generator
 
 **从项目信息到专业 README 的一站式生成 Skill**
 
