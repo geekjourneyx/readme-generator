@@ -1,15 +1,21 @@
 {
   "name": "github-readme",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "AI Agent Skill for generating professional README.md with SEO/GEO optimization and 16:9 infographics",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "screenshot": "node scripts/gen_infographic.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "readme",
+    "agent-skill",
+    "copilot-cli",
+    "claude-code",
+    "infographic",
+    "seo"
+  ],
+  "author": "geekjourneyx",
+  "license": "MIT",
+  "type": "module",
   "dependencies": {
     "playwright": "^1.59.1"
   }

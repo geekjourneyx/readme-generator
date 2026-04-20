@@ -5,3 +5,6 @@ timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
 2026-04-19T15:30	38268db	github-readme	71	75	keep	D4检查点	在Phase 2后添加信息图确认点，Phase 4后添加元信息确认点，D4从4→7	dry_run
 2026-04-19T15:19	eac4d94	github-readme	75	80	keep	D5+D2	新增Phase 1.5 getdesign风格选择，Token提取表+claude默认值	dry_run
 2026-04-19T15:35	434f4f0	github-readme	80	85	keep	D5+D8	移除SKILL.md/README/信息图中所有emoji，新增零Emoji原则章节	dry_run
+2026-04-20T23:16	6469296	github-readme	77	79	keep	D5指令具体性	修复emoji自相矛盾：移除Phase3和design-system.md中的shortcode	dry_run
+2026-04-20T23:18	4b9287c	github-readme	79	83	keep	D5指令具体性	补充TECH_CARDS/FEATURE_CARDS/PIPELINE_STAGES的HTML结构示例	dry_run
+2026-04-20T23:20	7846d66	github-readme	83	84	keep	D3边界条件	补充getdesign失败fallback路径，默认Token适用范围扩展	dry_run

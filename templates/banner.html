@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; overflow: hidden;
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    background: #0d1117;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .container {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; height: 100%;
+    padding: 80px 120px;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 60%, #1c2433 100%);
+    position: relative;
+  }
+  /* Decorative grid lines */
+  .container::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  /* Glow accent */
+  .container::after {
+    content: '';
+    position: absolute;
+    left: -200px; top: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, {{PRIMARY_COLOR}}22 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .left {
+    flex: 1;
+    z-index: 1;
+    max-width: 960px;
+  }
+  .badge {
+    display: inline-block;
+    background: {{PRIMARY_COLOR}}22;
+    border: 1px solid {{PRIMARY_COLOR}}44;
+    color: {{PRIMARY_COLOR}};
+    font-size: 14px; font-weight: 600;
+    padding: 6px 16px; border-radius: 20px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-size: 88px; font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+  .tagline {
+    font-size: 28px; font-weight: 400;
+    color: #8b949e;
+    line-height: 1.5;
+    max-width: 700px;
+  }
+  .tagline strong {
+    color: {{PRIMARY_COLOR}};
+    font-weight: 600;
+  }
+  .divider {
+    width: 80px; height: 4px;
+    background: linear-gradient(90deg, {{PRIMARY_COLOR}}, transparent);
+    border-radius: 2px;
+    margin: 36px 0;
+  }
+  .meta {
+    display: flex; gap: 32px;
+  }
+  .meta-item {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .meta-label {
+    font-size: 12px; font-weight: 600;
+    color: #484f58;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .meta-value {
+    font-size: 18px; font-weight: 600;
+    color: #8b949e;
+  }
+  .right {
+    z-index: 1;
+    display: flex; flex-direction: column; gap: 16px;
+    min-width: 380px;
+  }
+  .tech-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-left: 3px solid {{PRIMARY_COLOR}};
+    border-radius: 8px;
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .tech-icon {
+    width: 40px; height: 40px;
+    background: {{PRIMARY_COLOR}}22;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: {{PRIMARY_COLOR}};
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .tech-info { flex: 1; }
+  .tech-name {
+    font-size: 16px; font-weight: 600;
+    color: #c9d1d9;
+    margin-bottom: 2px;
+  }
+  .tech-desc {
+    font-size: 13px; color: #6e7681;
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 40px; left: 120px; right: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, {{PRIMARY_COLOR}}44, transparent);
+  }
+  .version-tag {
+    position: absolute;
+    bottom: 52px; right: 120px;
+    font-size: 13px; color: #484f58;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="left">
+    <div class="badge">{{CATEGORY}}</div>
+    <h1>{{PROJECT_NAME}}</h1>
+    <p class="tagline">{{TAGLINE}}</p>
+    <div class="divider"></div>
+    <div class="meta">
+      <div class="meta-item">
+        <span class="meta-label">License</span>
+        <span class="meta-value">MIT</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Platform</span>
+        <span class="meta-value">{{PLATFORM}}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Language</span>
+        <span class="meta-value">{{LANGUAGE}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    {{TECH_CARDS}}
+  </div>
+  <div class="bottom-bar"></div>
+  <div class="version-tag">{{VERSION_INFO}}</div>
+</div>
+</body>
+</html>

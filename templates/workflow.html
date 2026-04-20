@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; overflow: hidden;
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    background: #0d1117;
+  }
+  .container {
+    width: 100%; height: 100%;
+    padding: 64px 120px;
+    display: flex; flex-direction: column;
+  }
+  .header {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 40px; font-weight: 800; color: #ffffff;
+    letter-spacing: -1px;
+  }
+  .subtitle { font-size: 18px; color: #6e7681; }
+  .pipeline {
+    display: flex; align-items: center; gap: 0;
+    flex: 1;
+  }
+  .stage {
+    flex: 1;
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    padding: 32px 28px;
+    position: relative;
+    min-height: 320px;
+    display: flex; flex-direction: column;
+  }
+  .stage-num {
+    font-size: 13px; font-weight: 700;
+    color: {{PRIMARY_COLOR}};
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .stage-title {
+    font-size: 20px; font-weight: 700;
+    color: #e6edf3;
+    margin-bottom: 16px;
+  }
+  .stage-items {
+    list-style: none;
+    flex: 1;
+  }
+  .stage-items li {
+    font-size: 14px; color: #8b949e;
+    padding: 5px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+    line-height: 1.4;
+  }
+  .stage-items li::before {
+    content: '·';
+    color: {{PRIMARY_COLOR}};
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .stage-badge {
+    margin-top: 16px;
+    display: inline-block;
+    background: color-mix(in srgb, {{PRIMARY_COLOR}} 12%, transparent);
+    border: 1px solid color-mix(in srgb, {{PRIMARY_COLOR}} 25%, transparent);
+    color: {{PRIMARY_COLOR}};
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 20px;
+    align-self: flex-start;
+  }
+  .arrow {
+    width: 48px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .arrow::after {
+    content: '→';
+    font-size: 24px;
+    color: #30363d;
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h2>工作流程</h2>
+    <span class="subtitle">{{STAGE_COUNT}}-stage pipeline</span>
+  </div>
+  <div class="pipeline">
+    {{PIPELINE_STAGES}}
+  </div>
+</div>
+</body>
+</html>
