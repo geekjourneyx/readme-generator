@@ -360,10 +360,10 @@ rm /tmp/readme-banner.html /tmp/readme-features.html /tmp/readme-workflow.html
 
 | | |
 |:---|:---|
-| :globe_with_meridians: 个人主页 | [domain.dev](https://domain.dev) |
-| :octocat: GitHub | [username](https://github.com/username) |
-| :bird: Twitter | [@handle](https://x.com/handle) |
-| :speech_balloon: 公众号 | 微信搜「公众号名」 |
+| 个人主页 | [domain.dev](https://domain.dev) |
+| GitHub | [username](https://github.com/username) |
+| Twitter | [@handle](https://x.com/handle) |
+| 公众号 | 微信搜「公众号名」 |
 ```
 
 ### 区块规则

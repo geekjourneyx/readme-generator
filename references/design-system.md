@@ -78,10 +78,10 @@ H2 章节标题：40px / 800 weight / -1px letter-spacing
 
 | | |
 |:---|:---|
-| :globe_with_meridians: 个人主页 | [domain.dev](https://domain.dev) |
-| :octocat: GitHub | [username](https://github.com/username) |
-| :bird: Twitter | [@handle](https://x.com/handle) |
-| :speech_balloon: 公众号 | 微信搜「公众号名」 |
+| 个人主页 | [domain.dev](https://domain.dev) |
+| GitHub | [username](https://github.com/username) |
+| Twitter | [@handle](https://x.com/handle) |
+| 公众号 | 微信搜「公众号名」 |
 ```
 
-使用 `:octocat:` 而不是 `:github:`（GitHub 不支持）。
+纯文字标签，不使用 emoji shortcode（与零 Emoji 原则一致）。
