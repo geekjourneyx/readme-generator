@@ -226,11 +226,51 @@ STYLE_NAME    = <用户选择的风格名>
 # {{PLATFORM}}         → 运行平台（如 "Node.js" / "Python"）
 # {{LANGUAGE}}         → 主要语言（如 "TypeScript"）
 # {{VERSION_INFO}}     → 版本信息（如 "v1.0 · 2026"）
-# {{TECH_CARDS}}       → 用 card HTML 片段替换，每条技术点一个 .tech-card div
-# {{FEATURE_CARDS}}    → 功能卡片 HTML，每个功能一个 .card div（含 --accent 颜色变量）
+# {{TECH_CARDS}}       → banner 右侧技术卡片（见下方 HTML 结构）
+# {{FEATURE_CARDS}}    → features 功能卡片（见下方 HTML 结构）
 # {{FEATURE_COUNT}}    → 功能数量数字（如 "6"）
-# {{PIPELINE_STAGES}}  → 流程阶段 HTML，交替 .stage 和 .arrow div
+# {{PIPELINE_STAGES}}  → workflow 流程阶段（见下方 HTML 结构）
 # {{STAGE_COUNT}}      → 阶段数量（如 "5"）
+```
+
+**卡片 HTML 结构参考（从 templates/ 提取，直接复制并填入内容）：**
+
+`{{TECH_CARDS}}`（banner.html 右侧，每条技术一个）：
+```html
+<div class="tech-card">
+  <div class="tech-icon">01</div>
+  <div class="tech-info">
+    <div class="tech-name">Node.js</div>
+    <div class="tech-desc">Runtime environment</div>
+  </div>
+</div>
+<!-- 重复 .tech-card，编号递增：02, 03... 建议 3-5 条 -->
+```
+
+`{{FEATURE_CARDS}}`（features.html 网格，每个功能一个，需设置 `--accent`）：
+```html
+<div class="card" style="--accent: {{PRIMARY_COLOR}}">
+  <div class="card-icon">01</div>
+  <div class="card-tag">Core</div>
+  <div class="card-title">并行调研</div>
+  <div class="card-desc">多个 Agent 同时搜索，汇总后去重排序</div>
+</div>
+<!-- 重复 .card，编号递增，card-tag 可选：Core / Integration / Output 等 -->
+```
+
+`{{PIPELINE_STAGES}}`（workflow.html 流水线，.stage 和 .arrow 交替）：
+```html
+<div class="stage">
+  <div class="stage-num">STEP 01</div>
+  <div class="stage-title">信息采集</div>
+  <ul class="stage-items">
+    <li>读取项目源码</li>
+    <li>提取 package.json</li>
+  </ul>
+  <span class="stage-badge">Input</span>
+</div>
+<div class="arrow"></div>
+<!-- 重复 .stage + .arrow，最后一个 .stage 后不加 .arrow -->
 ```
 
 **Step 2：截图**
