@@ -66,23 +66,11 @@ npx playwright install chromium
 
 ### 安装 Skill
 
-**Copilot CLI**
-
-将本仓库克隆到 skills 目录：
-
 ```bash
-git clone git@github.com:geekjourneyx/github-readme.git ~/.agents/skills/github-readme
-cd ~/.agents/skills/github-readme && npm install
+npx skills add https://github.com/geekjourneyx/github-readme
 ```
 
-**Claude Code**
-
-```bash
-git clone git@github.com:geekjourneyx/github-readme.git ~/.claude/skills/github-readme
-cd ~/.claude/skills/github-readme && npm install
-```
-
-> 安装后在对话中说「帮我写 README」即可触发。
+> 安装后在对话中说「帮我写 README」即可触发。支持 Copilot CLI 和 Claude Code。
 
 ---
 
