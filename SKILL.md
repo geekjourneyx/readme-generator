@@ -144,6 +144,8 @@ author:
 npx getdesign list
 ```
 
+> **如果 `npx getdesign list` 执行失败**（命令不存在、网络超时、npm registry 不可达）：跳过 Step 1-3，直接使用下方「claude 风格默认 Token」进入 Step 4。告知用户：「getdesign 工具暂不可用，将使用默认 claude 风格继续。」
+
 展示完整列表后，向用户提示：
 
 ```
@@ -182,7 +184,7 @@ mkdir -p /tmp/getdesign-claude && cd /tmp/getdesign-claude && npx getdesign add 
 | 标题字体 | Section 3 "Font Family" Headline 字体（无法加载自定义字体时用 fallback） | 模板 `font-family` |
 | 暗色文字 | Section 2 "Neutrals & Text" 最深的文字色 | 模板 `color` 主文字 |
 
-**claude 风格默认 Token（用户不选时直接使用）：**
+**claude 风格默认 Token（用户不选 / getdesign 不可用时直接使用）：**
 
 | Token | 值 | 说明 |
 |-------|-----|------|
