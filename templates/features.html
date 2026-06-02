@@ -3,96 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    width: 1920px; height: 1080px; overflow: hidden;
-    font-family: 'Inter', 'Noto Sans SC', sans-serif;
-    background: #0d1117;
+  :root {
+    --accent: {{PRIMARY_COLOR}};
+    --paper: #f4f1e8;
+    --ink: #171615;
+    --muted: #6d675d;
+    --line: rgba(23, 22, 21, 0.14);
   }
-  .container {
-    width: 100%; height: 100%;
-    padding: 64px 120px;
-    background: #0d1117;
-    display: flex; flex-direction: column;
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Avenir Next", "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+  }
+  .page {
+    width: 100%;
+    height: 100%;
+    padding: 86px 120px 94px;
+    display: flex;
+    flex-direction: column;
   }
   .header {
-    display: flex; align-items: baseline; gap: 16px;
-    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding-bottom: 42px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
   h2 {
-    font-size: 40px; font-weight: 800; color: #ffffff;
-    letter-spacing: -1px;
+    font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+    font-size: 86px;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
-  .subtitle {
-    font-size: 18px; color: #6e7681;
-    font-weight: 400;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    flex: 1;
-  }
-  .card {
-    background: #161b22;
-    border: 1px solid #21262d;
-    border-radius: 12px;
-    padding: 32px 36px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 12px 12px 0 0;
-  }
-  .card-icon {
-    width: 48px; height: 48px;
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
-    color: var(--accent);
-    margin-bottom: 20px;
+  .count {
+    font-size: 28px;
+    color: var(--muted);
     font-weight: 700;
   }
-  .card-title {
-    font-size: 22px; font-weight: 700;
-    color: #e6edf3;
-    margin-bottom: 10px;
+  .grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 74px;
+    background: var(--line);
+    border: 1px solid var(--line);
   }
-  .card-desc {
-    font-size: 15px; color: #8b949e;
-    line-height: 1.6;
+  .card {
+    background: #fbfaf5;
+    min-height: 600px;
+    padding: 58px 54px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .card.featured {
+    background: var(--accent);
+    color: #fffaf0;
+  }
+  .card-icon {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 86px;
+    line-height: 1;
+    color: rgba(23,22,21,0.12);
+  }
+  .featured .card-icon {
+    color: rgba(255,250,240,0.32);
   }
   .card-tag {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: color-mix(in srgb, var(--accent) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
     color: var(--accent);
-    font-size: 11px; font-weight: 600;
-    padding: 3px 10px; border-radius: 20px;
-    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .featured .card-tag {
+    color: rgba(255,250,240,0.78);
+  }
+  .card-title {
+    margin-top: 34px;
+    font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .featured .card-title {
+    color: #fffaf0;
+  }
+  .card-desc {
+    margin-top: 30px;
+    font-size: 30px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--muted);
+    max-width: 430px;
+  }
+  .featured .card-desc {
+    color: rgba(255,250,240,0.84);
+  }
+  .rule {
+    width: 100%;
+    height: 2px;
+    background: var(--line);
+    margin-top: 48px;
+  }
+  .featured .rule {
+    background: rgba(255,250,240,0.34);
   }
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <h2>核心特性</h2>
-    <span class="subtitle">{{FEATURE_COUNT}} key capabilities</span>
-  </div>
-  <div class="grid">
+<main class="page">
+  <header class="header">
+    <div>
+      <div class="eyebrow">What the reader remembers</div>
+      <h2>三个结果，足够了</h2>
+    </div>
+    <div class="count">{{FEATURE_COUNT}} core outcomes</div>
+  </header>
+  <section class="grid">
     {{FEATURE_CARDS}}
-  </div>
-</div>
+  </section>
+</main>
 </body>
 </html>
