@@ -19,7 +19,7 @@ mkdirSync(tmpDir, { recursive: true });
 const common = {
   PROJECT_NAME: 'GitHub README Generator',
   TAGLINE: '把项目 README 做成一份可以展示的作品。',
-  PRIMARY_COLOR: '#c96442',
+  PRIMARY_COLOR: '#c8a15a',
   CATEGORY: 'Portfolio README Design',
   PLATFORM: 'Codex',
   LANGUAGE: 'Markdown',
@@ -84,41 +84,6 @@ const featureCards = `
   </div>
 </article>`;
 
-const pipelineStages = `
-<article class="stage">
-  <div>
-    <div class="stage-num">01</div>
-    <h3 class="stage-title">理解项目</h3>
-    <ul class="stage-items">
-      <li>阅读代码、现有 README 和示例输出</li>
-      <li>提炼背景、用户和结果</li>
-    </ul>
-  </div>
-  <span class="stage-badge">Read</span>
-</article>
-<article class="stage highlight">
-  <div>
-    <div class="stage-num">02</div>
-    <h3 class="stage-title">设计表达</h3>
-    <ul class="stage-items">
-      <li>选择 portfolio / clean-doc / visual-story 模式</li>
-      <li>决定 Image Gen 和 HTML 海报各自负责什么</li>
-    </ul>
-  </div>
-  <span class="stage-badge">Design</span>
-</article>
-<article class="stage">
-  <div>
-    <div class="stage-num">03</div>
-    <h3 class="stage-title">交付作品</h3>
-    <ul class="stage-items">
-      <li>生成 README、三张视觉资产和元信息</li>
-      <li>检查可读性、噪音和真实运行结果</li>
-    </ul>
-  </div>
-  <span class="stage-badge">Ship</span>
-</article>`;
-
 const jobs = [
   {
     template: 'banner.html',
@@ -131,12 +96,6 @@ const jobs = [
     html: `${tmpDir}/features.html`,
     png: `${root}/assets/features.png`,
     vars: { ...common, FEATURE_CARDS: featureCards, FEATURE_COUNT: '3' },
-  },
-  {
-    template: 'workflow.html',
-    html: `${tmpDir}/workflow.html`,
-    png: `${root}/assets/workflow.png`,
-    vars: { ...common, PIPELINE_STAGES: pipelineStages, STAGE_COUNT: '3' },
   },
 ];
 
@@ -152,3 +111,13 @@ for (const job of jobs) {
     { stdio: 'inherit' },
   );
 }
+
+execFileSync(
+  process.execPath,
+  [
+    `${root}/scripts/compress_png_assets.mjs`,
+    `${root}/assets/banner.png`,
+    `${root}/assets/features.png`,
+  ],
+  { stdio: 'inherit' },
+);

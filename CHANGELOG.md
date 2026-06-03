@@ -6,6 +6,23 @@ The format is based on Keep a Changelog, and this project follows semantic versi
 
 ## [Unreleased]
 
+### Added
+
+- Added Codex Image Gen-first visual asset rules with compressed image output before README embedding.
+- Added dependency-free PNG recompression script and wired it into the showcase asset generation flow.
+- Added first-principles README guidance based on high-star open source project patterns.
+- Added visual-budget and noise-audit rules so the Skill can choose between portfolio, clean documentation, and structured README modes.
+
+### Changed
+
+- Updated HTML-to-PNG fallback templates to match the black, cinematic, high-contrast magazine-cover visual direction.
+- Reduced the default README visual set from three images to two: `banner.png` and `features.png`.
+- Replaced the separate workflow image with concise README prose.
+
+### Removed
+
+- Removed `assets/workflow.png` and `templates/workflow.html` from the default showcase flow.
+
 ## [1.1.0] - 2026-06-02
 
 ### Added

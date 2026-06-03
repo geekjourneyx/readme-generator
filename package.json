@@ -4,7 +4,8 @@
   "description": "AI Agent Skill for creating portfolio-grade GitHub READMEs with story-driven writing, visual assets, and metadata recommendations",
   "scripts": {
     "screenshot": "node scripts/gen_infographic.mjs",
-    "showcase": "node scripts/render_showcase_assets.mjs"
+    "showcase": "node scripts/render_showcase_assets.mjs",
+    "compress": "node scripts/compress_png_assets.mjs"
   },
   "keywords": [
     "readme",

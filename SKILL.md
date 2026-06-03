@@ -1,6 +1,6 @@
 ---
 name: readme-generator
-description: 为 GitHub 项目生成作品集级 README.md。适用于「帮我写 README」「生成 README」「优化 README」「README 最佳实践」「项目首页」「开源说明」「README 信息图」「README 封面」「用 Codex Image Gen / gpt-image-2 生成 README 图片」等请求。输出包括克制的 README 叙事、作品级视觉资产、MIT 许可证、GitHub Description 和 Topics 推荐、推荐星级，以及可选 gh CLI 更新建议。重点是帮项目讲清自己的故事，而不是套模板堆信息。
+description: 为 GitHub 项目生成作品集级 README.md。适用于「帮我写 README」「生成 README」「优化 README」「README 最佳实践」「项目首页」「开源说明」「README 信息图」「README 封面」「用 Codex Image Gen / gpt-image-2 生成 README 图片」等请求。输出包括克制的 README 叙事、最多两张高质量视觉资产、压缩后的图片、MIT 许可证、GitHub Description 和 Topics 推荐、推荐星级，以及可选 gh CLI 更新建议。重点是帮项目讲清自己的故事，并基于项目类型判断视觉强度，避免套模板、堆信息和过度设计。
 ---
 
 # GitHub README Generator
@@ -12,6 +12,20 @@ README 是项目的第一张作品集页面。它不是说明书的目录，也�
 3. 我怎么开始使用。
 
 本 Skill 的目标是生成 **100 分 README 作品**：清楚、有审美、克制、可信，能让项目像一个完整作品一样被理解。
+
+---
+
+## 第一性原理
+
+README 是信任入口和路径入口，不是完整文档。它应该帮助第一次打开仓库的人做出快速判断：
+
+1. 这个项目解决什么问题。
+2. 它适不适合我。
+3. 我是否能马上运行、安装或继续了解。
+
+1w star 以上开源项目通常不是靠信息量取胜，而是靠清晰的首屏、直接的上手路径、可信的文档入口和克制的社区信息取胜。图片、徽章、作者信息和设计理念都只是辅助；一旦它们拖慢理解，就是噪音。
+
+本 Skill 的核心取舍：README 先讲清项目，再做美化；视觉服务理解，不替代理解。
 
 ---
 
@@ -30,6 +44,19 @@ README 是项目的第一张作品集页面。它不是说明书的目录，也�
 
 低于 90 分的 README 不交付；先删噪音、放大重点、重排叙事。
 
+### 高星项目基线
+
+默认向高星开源项目学习这些结构：
+
+- 项目名 + 一句话价值主张。
+- 少量必要 badge，不堆状态装饰。
+- 快速开始或文档入口靠前。
+- 示例只在能降低上手成本时出现。
+- 贡献、社区、安全、许可证简洁清楚。
+- UI / 产品项目可放截图；库、SDK、基础设施项目少图或无图。
+
+不要把 README 写成设计宣言、完整说明书、功能墙、社交名片或内部工作流报告。
+
 ---
 
 ## 设计原则
@@ -39,6 +66,7 @@ README 是项目的第一张作品集页面。它不是说明书的目录，也�
 - H1 必须是项目正式名称，紧跟一句价值主张。
 - README 开头先讲项目价值，再放安装细节。
 - 图片只表达一个重点，不能承载密集说明文字。
+- 默认最多两张图片：一张封面，一张核心能力或结果图。
 - GitHub 会缩小图片显示，图片里的主文案必须按海报字号设计。
 - 对功能的描述要具体，但不夸张；能用结果说明就不要自夸。
 - 对作者和许可证保持简洁，不做社交名片堆砌。
@@ -50,6 +78,7 @@ README 是项目的第一张作品集页面。它不是说明书的目录，也�
 - 大段“我们很专业”的空话。
 - 6 个以上小卡片堆在一张图里。
 - 流程图里塞满阶段、命令和小字说明。
+- 把第三张流程图当作默认产物；工作方式通常用正文讲更清楚。
 - 把 Image Gen 当作精确文字排版工具。
 - 把 README 写成完整产品手册；详细文档应放到 `docs/`。
 
@@ -88,16 +117,30 @@ find . -maxdepth 2 -type f | sed 's#^\./##' | sort | head -80
 - 主要入口文件
 - 示例、截图、演示文件
 
-判断场景：
+判断场景和视觉预算：
 
-| 场景 | 判断方式 | 策略 |
-|------|----------|------|
-| 新建 README | 没有 README，或 README 很短 | 完整生成 |
-| 升级 README | 已有 README，有有效内容 | 保留独特内容，重写结构和首屏 |
-| 作品集强化 | 用户强调审美、故事、展示 | 优先做叙事和视觉 |
-| 纯文档模式 | SDK、库、后端工具 | 少图，重安装和 API 示例 |
+| 场景 | 判断方式 | 策略 | 图片上限 |
+|------|----------|------|----------|
+| 新建 README | 没有 README，或 README 很短 | 完整生成，但保持短路径 | 1-2 |
+| 升级 README | 已有 README，有有效内容 | 保留独特内容，重写结构和首屏 | 0-2 |
+| 作品集强化 | 用户强调审美、故事、展示 | 优先做叙事和封面表现 | 2 |
+| 纯文档模式 | SDK、库、后端工具、基础设施 | 少图，重安装、API、文档入口 | 0-1 |
+| UI / 产品展示 | 有界面、截图、demo、视觉结果 | 用真实结果或封面辅助理解 | 1-2 |
 
 升级现有 README 时，不要删除用户已有的关键内容。先提取可保留内容，再重排。
+
+### 降噪审查
+
+写 README 前先标记哪些内容应外移或删除：
+
+| 内容 | 默认处理 |
+|------|----------|
+| 设计评分表、工作原则、内部方法论 | 放在 `SKILL.md` 或 `docs/`，不进 README |
+| 生成文件树、模板变量、脚本细节 | 只在用户需要开发文档时保留 |
+| 第三张流程图 | 删除，改成 2-4 行正文或简短列表 |
+| 过多社交链接 | 只留 GitHub / 主页等核心入口 |
+| 太泛的功能列表 | 合并成 3 个结果导向能力 |
+| 安装前的长背景 | 缩短，快速开始提前 |
 
 ---
 
@@ -122,20 +165,20 @@ find . -maxdepth 2 -type f | sed 's#^\./##' | sort | head -80
 ```
 项目名
 一句话价值主张
-视觉封面
+视觉封面（按项目类型决定是否需要）
 
 这是什么
 为什么需要它
 你会得到什么
 快速开始
 示例或输出
-工作方式
+工作方式（正文，不默认配图）
 安装
 许可证
 作者
 ```
 
-如果项目偏工具或库，可以把“快速开始”提前到“为什么需要它”之后。
+如果项目偏工具、库或基础设施，把“快速开始”提前到“为什么需要它”之后。README 的顺序要服务读者行动，不服务模板完整性。
 
 ---
 
@@ -150,34 +193,58 @@ README 图片有两类：
 
 | 模式 | 适用场景 | 图片策略 |
 |------|----------|----------|
-| `portfolio` | 默认推荐，适合多数项目 | Banner 可用 Codex Image Gen，其余用大字 HTML 海报 |
-| `clean-doc` | SDK、库、后端工具、严肃基础设施 | 少图或不用图，保留清晰文档结构 |
-| `visual-story` | AI 工具、设计工具、独立产品、作品展示 | Codex Image Gen 参与封面和氛围图 |
-| `structured` | 用户明确要信息图、流程图 | HTML/CSS 模板生成，保证文字准确 |
+| `portfolio` | 默认推荐，适合需要展示完整作品感的项目 | 1 张封面 + 1 张核心能力图 |
+| `clean-doc` | SDK、库、后端工具、严肃基础设施 | 0-1 张图，优先快速开始和示例 |
+| `visual-story` | AI 工具、设计工具、独立产品、作品展示 | 最多 2 张图，Codex Image Gen 负责记忆点 |
+| `structured` | 用户明确要信息图、对比图、流程图 | 1-2 张 HTML/CSS 海报，保证文字准确 |
 
-默认使用 `portfolio`。用户明确说“用 Image Gen”“用 gpt-image-2”“AI 生成图片”时，启用 Codex 内置图片生成能力。
+默认先判断项目类型，不要强行套 `portfolio`。视觉资产生成优先级固定为：
+
+1. **Codex Image Gen Skill**：优先用 Codex 内置图片生成能力生成视觉资产。
+2. **压缩**：生成后的 PNG 必须压缩，再写入 README 引用路径。
+3. **HTML to PNG fallback**：只有当 Image Gen 不可用、输出不符合要求、或用户明确要求结构化精确文字时，才退化到 HTML/CSS 模板截图。
+
+不要把 HTML 截图当默认路径。它是可靠兜底，不是首选视觉方案。
 
 ---
 
 ## Phase 3: 作品级视觉资产生成
 
-默认输出仍使用统一文件名：
+默认输出使用两个稳定文件名：
 
 ```
 assets/banner.png
 assets/features.png
-assets/workflow.png
 ```
 
-这样 README 引用路径稳定，不管图片来自 HTML 截图还是 Codex Image Gen。
+这样 README 引用路径稳定，不管图片来自 Codex Image Gen 还是 HTML 截图兜底。
 
 ### 图片职责
 
 | 图片 | 目标 | 推荐方式 |
 |------|------|----------|
-| `banner.png` | 项目封面，建立气质和记忆点 | Codex Image Gen 或 HTML 海报 |
-| `features.png` | 3 个核心能力，不超过 3 张大卡 | HTML 海报 |
-| `workflow.png` | 3 步工作方式，不超过 3 步 | HTML 海报 |
+| `banner.png` | 项目封面，建立气质和记忆点 | Codex Image Gen 优先 |
+| `features.png` | 核心能力、结果或必要流程的视觉表达 | Codex Image Gen 优先；文字精确时 HTML 兜底 |
+
+不要默认生成 `workflow.png`。如果用户明确要求流程图，把流程内容合并进 `features.png` 或放到正文，不新增第三张图。
+
+### 默认视觉风格
+
+所有 README 视觉资产默认采用同一套风格：
+
+```text
+黑底、极简、电影打光、高对比、大留白、低亮度、白/灰/暖金三色、高级杂志封面感。
+画面质感：极深黑背景 #050505，纸张颗粒，浅景深，体积雾，细窄轮廓光，局部金属质感。
+质量目标：出自 1w star 设计师水准作品。
+```
+
+设计约束：
+
+- 背景以 `#050505` 深黑为主。
+- 色彩只使用白、灰、暖金；不要引入彩虹渐变、紫蓝霓虹或高饱和装饰色。
+- 使用大留白和局部光，而不是堆元素。
+- Image Gen 图片尽量不放文字；文字由 README 或 HTML 兜底图承载。
+- 如果必须在图中出现文字，最多 1 个短标题，不放段落、命令或表格。
 
 ### 字号底线
 
@@ -194,14 +261,13 @@ assets/workflow.png
 
 不要使用 18px 以下文字。GitHub 缩放后会不可读。
 
-### HTML 截图方式
+### HTML to PNG fallback
 
-用于结构化文字图：
+仅在 Image Gen 不可用、用户要求精确结构化文字、或 Image Gen 输出无法通过检查时使用：
 
 ```bash
 node scripts/gen_infographic.mjs /tmp/readme-banner.html assets/banner.png 1920 1080
 node scripts/gen_infographic.mjs /tmp/readme-features.html assets/features.png 1920 1080
-node scripts/gen_infographic.mjs /tmp/readme-workflow.html assets/workflow.png 1920 1080
 ```
 
 模板来自：
@@ -209,7 +275,6 @@ node scripts/gen_infographic.mjs /tmp/readme-workflow.html assets/workflow.png 1
 ```
 templates/banner.html
 templates/features.html
-templates/workflow.html
 ```
 
 模板变量：
@@ -225,59 +290,17 @@ templates/workflow.html
 {{TECH_CARDS}}
 {{FEATURE_CARDS}}
 {{FEATURE_COUNT}}
-{{PIPELINE_STAGES}}
-{{STAGE_COUNT}}
 ```
 
 卡片结构：
 
-`{{TECH_CARDS}}` 用在封面右侧，建议 2-3 条：
-
-```html
-<div class="tech-card">
-  <div class="tech-icon">01</div>
-  <div>
-    <div class="tech-name">Story</div>
-    <div class="tech-desc">提炼项目背景、价值和读者视角</div>
-  </div>
-</div>
-```
-
-`{{FEATURE_CARDS}}` 只放 3 张大卡，第一张可加 `featured`：
-
-```html
-<article class="card featured">
-  <div>
-    <div class="card-tag">Story</div>
-    <h3 class="card-title">讲清项目为什么存在</h3>
-    <p class="card-desc">把背景、对象和结果压缩成读者能快速判断的叙事。</p>
-  </div>
-  <div>
-    <div class="rule"></div>
-    <div class="card-icon">01</div>
-  </div>
-</article>
-```
-
-`{{PIPELINE_STAGES}}` 只放 3 个阶段，不再插入箭头：
-
-```html
-<article class="stage highlight">
-  <div>
-    <div class="stage-num">02</div>
-    <h3 class="stage-title">设计表达</h3>
-    <ul class="stage-items">
-      <li>选择 portfolio / clean-doc / visual-story / structured 模式</li>
-      <li>决定 Image Gen 和 HTML 海报各自负责什么</li>
-    </ul>
-  </div>
-  <span class="stage-badge">Design</span>
-</article>
-```
+- `{{TECH_CARDS}}` 用在封面右侧，建议 2-3 条，只放短标签和一句说明。
+- `{{FEATURE_CARDS}}` 只放 2-3 张大卡，第一张可加 `featured`。
+- 如果需要表达工作流程，用 `features.png` 的 3 个结果阶段承载，不新增第三张图。
 
 ### Codex Image Gen / gpt-image-2 方式
 
-当用户指定 Image Gen 时，调用 Codex 自带图片生成能力，不要在项目里临时硬编码 API 脚本。
+默认优先调用 Codex 自带图片生成能力，不要在项目里临时硬编码 API 脚本。
 
 适合 Image Gen 的内容：
 
@@ -298,16 +321,31 @@ templates/workflow.html
 
 ```text
 Use case: productivity-visual
-Asset type: GitHub README hero banner, 16:9
+Asset type: GitHub README visual asset, 16:9
 Project: <project_name>
 Story: <origin + promise>
-Visual direction: editorial portfolio cover, restrained, premium, high contrast, generous negative space
-Composition: one strong visual idea, no dense UI, no small text
-Text policy: no body text inside the image; leave clear space for README title if needed
-Avoid: emoji, clutter, fake interface text, tiny labels, generic startup gradients
+Visual direction: black background, minimalist, cinematic lighting, high contrast, large negative space, low brightness, premium magazine cover
+Texture and lighting: #050505 deep black background, subtle paper grain, shallow depth of field, volumetric haze, thin rim light, selective metallic highlights
+Palette: white, gray, warm gold only
+Composition: one strong visual idea, restrained, spacious, no dense UI
+Quality bar: 10k-star designer portfolio quality
+Text policy: no body text inside the image; at most one short title only when necessary
+Avoid: emoji, clutter, fake interface text, tiny labels, generic gradients, bright neon, overdesigned dashboards
 ```
 
-如果用户要求三张图都用 Image Gen，先提醒：封面适合，功能和流程图可能出现文字不准。用户确认后再继续。
+如果 Image Gen 不支持、无法调用、或输出出现错误文字/风格偏差，退回 HTML to PNG 兜底流程。
+
+### 图片压缩
+
+所有生成图片都必须压缩后再交付。
+
+默认命令：
+
+```bash
+npm run compress
+```
+
+如果项目没有压缩脚本，使用可用工具中最简单的一种：`pngquant`、`oxipng`、`sips`，或保留原图并明确说明压缩工具不可用。不要为了压缩引入重型依赖。
 
 ### 视觉检查
 
@@ -319,6 +357,7 @@ Avoid: emoji, clutter, fake interface text, tiny labels, generic startup gradien
 - 没有过度装饰。
 - 视觉风格和项目故事一致。
 - Image Gen 图没有错误文字或多余水印。
+- 压缩后图片仍然清晰，没有明显色带、噪点破坏或文字糊边。
 
 ---
 
@@ -355,7 +394,7 @@ Avoid: emoji, clutter, fake interface text, tiny labels, generic startup gradien
 
 ## 工作方式
 
-<img src="assets/workflow.png" alt="[3 步工作方式]" width="100%">
+[2-4 行讲清工作方式；不要默认再放第三张图。]
 
 ## 快速开始
 
@@ -379,6 +418,7 @@ Avoid: emoji, clutter, fake interface text, tiny labels, generic startup gradien
 - 不要超过 3 个 badge，除非项目确实需要状态标识。
 - 不要在图片后重复同样的功能列表。
 - 不要把“设计原则”“项目结构”“生成内容”都塞进 README；只保留对读者有用的部分。
+- 不要默认放第三张 workflow 图；两张图已经足够承载作品感和核心信息。
 - 如果有详细说明，放到 `docs/`，README 只做入口。
 
 ---
@@ -530,7 +570,7 @@ gh repo edit OWNER/REPO --remove-topic old-topic --add-topic new-topic
 ```bash
 node --version
 npm run showcase
-file assets/banner.png assets/features.png assets/workflow.png
+file assets/banner.png assets/features.png
 git status --short
 ```
 

@@ -2,57 +2,42 @@
 
 ## 色彩主题
 
-三套预置主题，根据项目性质选择：
+默认采用黑底、极简、电影打光、高对比、大留白的杂志封面方向。项目本身没有强品牌色时，不再套多套主题。
 
-### Dark Tech（默认，科技/开发工具类）
 ```css
---bg-primary:   #0d1117   /* GitHub 深色底 */
---bg-secondary: #161b22   /* 卡片底色 */
---border:       #21262d   /* 分割线 */
---text-primary: #e6edf3   /* 主文字 */
---text-muted:   #8b949e   /* 辅助文字 */
---accent:       #0ea5e9   /* 主色（科技蓝）*/
+--bg-primary:   #050505   /* 极深黑背景 */
+--bg-secondary: #0c0b09   /* 低亮度面板 */
+--border:       #2a251b   /* 暖暗边界 */
+--text-primary: #f4f0e8   /* 暖白主文字 */
+--text-muted:   #9a9488   /* 灰色辅助文字 */
+--accent:       #c8a15a   /* 暖金强调 */
 ```
 
-### Warm Editorial（出行/生活方式类）
-```css
---bg-primary:   #1a1410   /* 暖棕深色 */
---bg-secondary: #241e18   /* 卡片底色 */
---border:       #3a3028   /* 分割线 */
---text-primary: #f0e6d3   /* 暖白文字 */
---text-muted:   #a09080   /* 辅助文字 */
---accent:       #d4a017   /* 主色（琥珀金）*/
-```
-
-### Nature Green（工具/效率类）
-```css
---bg-primary:   #0f1a0f   /* 深绿底 */
---bg-secondary: #162016   /* 卡片底色 */
---border:       #2a3a2a   /* 分割线 */
---text-primary: #e8f5e8   /* 白绿文字 */
---text-muted:   #7a9a7a   /* 辅助文字 */
---accent:       #10b981   /* 主色（翠绿）*/
-```
+只使用白、灰、暖金三色。不要引入彩虹渐变、紫蓝霓虹或高饱和装饰色。
 
 ## 字体层级
 
 ```
-H1 项目名：88px / 800 weight / -2px letter-spacing
-H2 章节标题：40px / 800 weight / -1px letter-spacing
-卡片标题：22px / 700 weight
-正文：15-18px / 400-600 weight
-标签/角标：11-13px / 600 weight / uppercase
+H1 项目名：92px+ / 800 weight / 0 letter-spacing
+中文主标题：80px+ / 800 weight / 0 letter-spacing
+H2 章节标题：48px+ / 800 weight / 0 letter-spacing
+卡片标题：48px+ / 700 weight
+正文：28px+ / 400-600 weight
+标签/角标：22px+ / 600 weight / uppercase
 ```
 
-## 16:9 信息图规格
+不要使用 18px 以下文字。GitHub 会缩小图片显示，小字会直接失效。
+
+## 16:9 视觉资产规格
 
 | 图片 | 尺寸 | 用途 |
 |------|------|------|
-| banner.png | 1920×1080 | README 顶部 hero |
-| features.png | 1920×1080 | 功能特性展示 |
-| workflow.png | 1920×1080 | 工作流程图 |
+| banner.png | 1920×1080 | README 顶部封面 |
+| features.png | 1920×1080 | 核心能力、结果或必要流程 |
 
-所有图片存放在 `assets/` 目录，在 README 中以 `width="100%"` 嵌入。
+默认最多两张图，全部存放在 `assets/` 目录，在 README 中以 `width="100%"` 嵌入。
+
+不要默认生成单独的流程图。工作方式优先用正文说明；如果必须可视化流程，把它合并进 `features.png`。
 
 ## Badge 规范
 
@@ -60,7 +45,6 @@ H2 章节标题：40px / 800 weight / -1px letter-spacing
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-green.svg)]()
 [![Node](https://img.shields.io/badge/Node.js-≥18-6b7c5e.svg)](https://nodejs.org)
-[![Stars](https://img.shields.io/github/stars/USER/REPO)](https://github.com/USER/REPO)
 ```
 
 颜色建议：
@@ -69,7 +53,7 @@ H2 章节标题：40px / 800 weight / -1px letter-spacing
 - Platform/Runtime：`#6b7280`（灰）
 - Status：`#f59e0b`（橙，beta）/ `#10b981`（绿，stable）
 
-最多 5 个 badge，保持视觉整洁。
+最多 3 个 badge，保持视觉整洁。
 
 ## 作者区块模板
 
@@ -80,8 +64,6 @@ H2 章节标题：40px / 800 weight / -1px letter-spacing
 |:---|:---|
 | 个人主页 | [domain.dev](https://domain.dev) |
 | GitHub | [username](https://github.com/username) |
-| Twitter | [@handle](https://x.com/handle) |
-| 公众号 | 微信搜「公众号名」 |
 ```
 
-纯文字标签，不使用 emoji shortcode（与零 Emoji 原则一致）。
+作者区块只保留最重要入口。纯文字标签，不使用 emoji shortcode（与零 Emoji 原则一致）。

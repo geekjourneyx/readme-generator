@@ -7,10 +7,10 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --accent: {{PRIMARY_COLOR}};
-    --paper: #f4f1e8;
-    --ink: #171615;
-    --muted: #6d675d;
-    --line: rgba(23, 22, 21, 0.14);
+    --paper: #050505;
+    --ink: #f3efe7;
+    --muted: rgba(243, 239, 231, 0.58);
+    --line: rgba(243, 239, 231, 0.14);
   }
   body {
     width: 1920px;
@@ -44,12 +44,12 @@
   }
   h2 {
     font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
-    font-size: 86px;
+    font-size: 68px;
     line-height: 1.02;
     letter-spacing: -0.035em;
   }
   .count {
-    font-size: 28px;
+    font-size: 25px;
     color: var(--muted);
     font-weight: 700;
   }
@@ -63,7 +63,7 @@
     border: 1px solid var(--line);
   }
   .card {
-    background: #fbfaf5;
+    background: #090909;
     min-height: 600px;
     padding: 58px 54px 52px;
     display: flex;
@@ -72,14 +72,16 @@
     position: relative;
   }
   .card.featured {
-    background: var(--accent);
+    background: #0f0d08;
     color: #fffaf0;
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
   }
   .card-icon {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 86px;
+    font-size: 64px;
     line-height: 1;
-    color: rgba(23,22,21,0.12);
+    color: rgba(243,239,231,0.16);
   }
   .featured .card-icon {
     color: rgba(255,250,240,0.32);
@@ -97,7 +99,7 @@
   .card-title {
     margin-top: 34px;
     font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
-    font-size: 56px;
+    font-size: 44px;
     line-height: 1.05;
     letter-spacing: -0.025em;
     color: var(--ink);
@@ -107,7 +109,7 @@
   }
   .card-desc {
     margin-top: 30px;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.45;
     font-weight: 600;
     color: var(--muted);

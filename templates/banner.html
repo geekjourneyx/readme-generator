@@ -7,10 +7,10 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --accent: {{PRIMARY_COLOR}};
-    --paper: #f4f1e8;
-    --ink: #151412;
-    --muted: #68645b;
-    --line: rgba(21, 20, 18, 0.16);
+    --paper: #050505;
+    --ink: #f3efe7;
+    --muted: rgba(243, 239, 231, 0.58);
+    --line: rgba(243, 239, 231, 0.14);
   }
   body {
     width: 1920px;
@@ -34,6 +34,7 @@
     position: absolute;
     inset: 42px;
     border: 1px solid var(--line);
+    background-image: linear-gradient(115deg, rgba(255,255,255,0.035), transparent 34%, rgba(200,161,90,0.04));
     pointer-events: none;
   }
   .page::after {
@@ -43,7 +44,7 @@
     top: 0;
     width: 42%;
     height: 100%;
-    background: #11110f;
+    background: linear-gradient(180deg, #050505 0%, #090806 100%);
     z-index: 0;
   }
   .hero,
@@ -71,8 +72,8 @@
   }
   h1 {
     max-width: 940px;
-    font-size: 132px;
-    line-height: 0.92;
+    font-size: 104px;
+    line-height: 1;
     letter-spacing: -0.035em;
     font-weight: 700;
   }
@@ -80,7 +81,7 @@
     max-width: 870px;
     margin-top: 56px;
     font-family: "Avenir Next", "Helvetica Neue", Arial, "PingFang SC", sans-serif;
-    font-size: 36px;
+    font-size: 29px;
     line-height: 1.42;
     color: var(--muted);
     font-weight: 600;
@@ -93,12 +94,12 @@
   }
   .pill {
     min-width: 132px;
-    border: 1px solid rgba(21,20,18,0.18);
+    border: 1px solid rgba(243,239,231,0.16);
     padding: 18px 22px;
     font-size: 22px;
     font-weight: 700;
-    color: #77736a;
-    background: rgba(255,255,255,0.32);
+    color: rgba(243,239,231,0.62);
+    background: rgba(255,255,255,0.02);
     text-align: center;
   }
   .side {
@@ -111,9 +112,9 @@
   }
   .side-title {
     font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1.35;
-    color: rgba(242,239,232,0.64);
+    color: rgba(242,239,232,0.62);
     max-width: 440px;
   }
   .side-title strong {
@@ -134,20 +135,20 @@
   }
   .tech-icon {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 44px;
+    font-size: 36px;
     line-height: 1;
     color: var(--accent);
   }
   .tech-name {
     font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 800;
     color: #fffaf0;
   }
   .tech-desc {
     margin-top: 8px;
     font-family: "Avenir Next", "Helvetica Neue", Arial, "PingFang SC", sans-serif;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 1.35;
     color: rgba(242,239,232,0.62);
   }

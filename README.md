@@ -38,7 +38,7 @@ GitHub 项目就是开发者的作品集。README 是读者、招聘者、用户
 
 ## 工作方式
 
-<img src="assets/workflow.png" alt="Three-step README design workflow: understand, design, deliver" width="100%">
+它先阅读项目，判断 README 应该是偏作品展示还是偏清晰文档；再提炼项目故事，生成正文、两张以内的视觉资产和 GitHub 元信息建议。
 
 ---
 
@@ -97,8 +97,7 @@ project/
 ├── LICENSE
 └── assets/
     ├── banner.png
-    ├── features.png
-    └── workflow.png
+    └── features.png
 ```
 
 图片可以来自两条路线：
