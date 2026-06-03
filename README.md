@@ -16,7 +16,7 @@
 
 ## 这是什么
 
-GitHub README Generator 是一个 Codex Skill，用来把普通项目 README 升级成作品集级项目首页。
+GitHub README Generator 是一个 Agent Skill，用来把普通项目 README 升级成作品集级项目首页。
 
 它不会只替你填模板，而是先阅读项目，提炼背景、价值和使用路径，再生成克制的文案、作品级视觉资产和 GitHub 元信息建议。
 
