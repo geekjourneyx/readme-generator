@@ -88,13 +88,15 @@ const jobs = [
   {
     template: 'banner.html',
     html: `${tmpDir}/banner.html`,
-    png: `${root}/assets/banner.png`,
+    png: `${tmpDir}/banner.png`,
+    webp: `${root}/assets/banner.webp`,
     vars: { ...common, TECH_CARDS: techCards },
   },
   {
     template: 'features.html',
     html: `${tmpDir}/features.html`,
-    png: `${root}/assets/features.png`,
+    png: `${tmpDir}/features.png`,
+    webp: `${root}/assets/features.webp`,
     vars: { ...common, FEATURE_CARDS: featureCards, FEATURE_COUNT: '3' },
   },
 ];
@@ -115,9 +117,11 @@ for (const job of jobs) {
 execFileSync(
   process.execPath,
   [
-    `${root}/scripts/compress_png_assets.mjs`,
-    `${root}/assets/banner.png`,
-    `${root}/assets/features.png`,
+    `${root}/scripts/convert_webp_assets.mjs`,
+    `${tmpDir}/banner.png`,
+    `${root}/assets/banner.webp`,
+    `${tmpDir}/features.png`,
+    `${root}/assets/features.webp`,
   ],
   { stdio: 'inherit' },
 );

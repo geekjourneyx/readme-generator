@@ -5,7 +5,8 @@
   "scripts": {
     "screenshot": "node scripts/gen_infographic.mjs",
     "showcase": "node scripts/render_showcase_assets.mjs",
-    "compress": "node scripts/compress_png_assets.mjs"
+    "compress": "node scripts/compress_png_assets.mjs",
+    "webp": "node scripts/convert_webp_assets.mjs"
   },
   "keywords": [
     "readme",

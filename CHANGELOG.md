@@ -12,12 +12,16 @@ The format is based on Keep a Changelog, and this project follows semantic versi
 - Added dependency-free PNG recompression script and wired it into the showcase asset generation flow.
 - Added first-principles README guidance based on high-star open source project patterns.
 - Added visual-budget and noise-audit rules so the Skill can choose between portfolio, clean documentation, and structured README modes.
+- Added project name-card image guidance so README visuals carry the project name, positioning line, and a few high-signal labels.
+- Added WebP conversion for README showcase assets.
 
 ### Changed
 
 - Updated HTML-to-PNG fallback templates to match the black, cinematic, high-contrast magazine-cover visual direction.
 - Reduced the default README visual set from three images to two: `banner.png` and `features.png`.
 - Replaced the separate workflow image with concise README prose.
+- Regenerated `assets/banner.png` and `assets/features.png` with Codex Image Gen instead of HTML-to-PNG screenshots.
+- Switched README showcase assets from PNG to WebP for lighter loading.
 
 ### Removed
 

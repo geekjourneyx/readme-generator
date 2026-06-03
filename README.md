@@ -4,7 +4,7 @@
 
 **把项目 README 做成一份可以展示的作品。**
 
-<img src="assets/banner.png" alt="GitHub README Generator — portfolio-grade README design for open source projects" width="100%">
+<img src="assets/banner.webp" alt="GitHub README Generator — portfolio-grade README design for open source projects" width="100%">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/Node.js-≥18-6b7c5e.svg)](https://nodejs.org)
@@ -32,7 +32,7 @@ GitHub 项目就是开发者的作品集。README 是读者、招聘者、用户
 
 ## 你会得到什么
 
-<img src="assets/features.png" alt="Three outcomes: story, visual identity, and clean delivery" width="100%">
+<img src="assets/features.webp" alt="Three outcomes: story, visual identity, and clean delivery" width="100%">
 
 ---
 
@@ -96,8 +96,8 @@ project/
 ├── README.md
 ├── LICENSE
 └── assets/
-    ├── banner.png
-    └── features.png
+    ├── banner.webp
+    └── features.webp
 ```
 
 图片可以来自两条路线：

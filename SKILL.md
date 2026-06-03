@@ -65,7 +65,7 @@ README 是信任入口和路径入口，不是完整文档。它应该帮助第�
 
 - H1 必须是项目正式名称，紧跟一句价值主张。
 - README 开头先讲项目价值，再放安装细节。
-- 图片只表达一个重点，不能承载密集说明文字。
+- 图片只表达一个重点，但应该承担项目名片功能：让读者一眼看到项目名和定位。
 - 默认最多两张图片：一张封面，一张核心能力或结果图。
 - GitHub 会缩小图片显示，图片里的主文案必须按海报字号设计。
 - 对功能的描述要具体，但不夸张；能用结果说明就不要自夸。
@@ -79,7 +79,7 @@ README 是信任入口和路径入口，不是完整文档。它应该帮助第�
 - 6 个以上小卡片堆在一张图里。
 - 流程图里塞满阶段、命令和小字说明。
 - 把第三张流程图当作默认产物；工作方式通常用正文讲更清楚。
-- 把 Image Gen 当作精确文字排版工具。
+- 把 Image Gen 当作长文排版工具。
 - 把 README 写成完整产品手册；详细文档应放到 `docs/`。
 
 ---
@@ -201,7 +201,7 @@ README 图片有两类：
 默认先判断项目类型，不要强行套 `portfolio`。视觉资产生成优先级固定为：
 
 1. **Codex Image Gen Skill**：优先用 Codex 内置图片生成能力生成视觉资产。
-2. **压缩**：生成后的 PNG 必须压缩，再写入 README 引用路径。
+2. **轻量化**：README 展示图优先转成 WebP，再写入 README 引用路径。
 3. **HTML to PNG fallback**：只有当 Image Gen 不可用、输出不符合要求、或用户明确要求结构化精确文字时，才退化到 HTML/CSS 模板截图。
 
 不要把 HTML 截图当默认路径。它是可靠兜底，不是首选视觉方案。
@@ -213,8 +213,8 @@ README 图片有两类：
 默认输出使用两个稳定文件名：
 
 ```
-assets/banner.png
-assets/features.png
+assets/banner.webp
+assets/features.webp
 ```
 
 这样 README 引用路径稳定，不管图片来自 Codex Image Gen 还是 HTML 截图兜底。
@@ -223,10 +223,10 @@ assets/features.png
 
 | 图片 | 目标 | 推荐方式 |
 |------|------|----------|
-| `banner.png` | 项目封面，建立气质和记忆点 | Codex Image Gen 优先 |
-| `features.png` | 核心能力、结果或必要流程的视觉表达 | Codex Image Gen 优先；文字精确时 HTML 兜底 |
+| `banner.webp` | 项目名片，建立项目名、定位和记忆点 | Codex Image Gen 优先 |
+| `features.webp` | 核心能力、结果或必要流程的传播图 | Codex Image Gen 优先；文字精确时 HTML 兜底 |
 
-不要默认生成 `workflow.png`。如果用户明确要求流程图，把流程内容合并进 `features.png` 或放到正文，不新增第三张图。
+不要默认生成 `workflow.png` 或 `workflow.webp`。如果用户明确要求流程图，把流程内容合并进 `features.webp` 或放到正文，不新增第三张图。
 
 ### 默认视觉风格
 
@@ -243,8 +243,27 @@ assets/features.png
 - 背景以 `#050505` 深黑为主。
 - 色彩只使用白、灰、暖金；不要引入彩虹渐变、紫蓝霓虹或高饱和装饰色。
 - 使用大留白和局部光，而不是堆元素。
-- Image Gen 图片尽量不放文字；文字由 README 或 HTML 兜底图承载。
-- 如果必须在图中出现文字，最多 1 个短标题，不放段落、命令或表格。
+- 图片应该有少量高价值文字，承担传播和定位，不做长说明。
+- 文字越少越强：每张图只保留读者离开 README 后仍该记住的信息。
+- 不放段落、命令、表格、版本号堆叠和密集说明。
+
+### 项目名片文字策略
+
+默认使用「项目名片型图片」，不是纯氛围图。
+
+| 图片 | 推荐文字 | 上限 |
+|------|----------|------|
+| `banner.webp` | 项目名 + 一句话定位 + 1-3 个短标签 | 18 个英文词或 28 个中文字 |
+| `features.webp` | 2-3 个结果短语，必要时加一个短标题 | 每个短语 2-5 个词 |
+
+好文字应该像封面标题，不像说明书：
+
+- 项目名必须清楚，优先放在 `banner.webp`。
+- 定位句说结果，不说口号，例如 “Portfolio-grade README design for open source projects”。
+- 标签只放搜索和记忆价值最高的词，例如 `Story`、`Visual`、`Signal`。
+- 中文可以用，但要少；英文项目名、短英文标签通常更稳。
+- 如果 Image Gen 把文字写错，重试一次；仍不准确时，保留 Image Gen 视觉底图，用 HTML/CSS fallback 承载精确文字。
+- 不为了“全程 AI 生成”牺牲项目名和定位的准确性。
 
 ### 字号底线
 
@@ -261,6 +280,8 @@ assets/features.png
 
 不要使用 18px 以下文字。GitHub 缩放后会不可读。
 
+Codex Image Gen 产物只要求保持 16:9 和足够清晰，不要为了凑 `1920×1080` 而把好图强行重采样。README 展示图优先保存为 WebP；`1920×1080` 是 HTML to PNG fallback 的模板尺寸。
+
 ### HTML to PNG fallback
 
 仅在 Image Gen 不可用、用户要求精确结构化文字、或 Image Gen 输出无法通过检查时使用：
@@ -268,6 +289,7 @@ assets/features.png
 ```bash
 node scripts/gen_infographic.mjs /tmp/readme-banner.html assets/banner.png 1920 1080
 node scripts/gen_infographic.mjs /tmp/readme-features.html assets/features.png 1920 1080
+node scripts/convert_webp_assets.mjs assets/banner.png assets/banner.webp assets/features.png assets/features.webp
 ```
 
 模板来自：
@@ -296,7 +318,7 @@ templates/features.html
 
 - `{{TECH_CARDS}}` 用在封面右侧，建议 2-3 条，只放短标签和一句说明。
 - `{{FEATURE_CARDS}}` 只放 2-3 张大卡，第一张可加 `featured`。
-- 如果需要表达工作流程，用 `features.png` 的 3 个结果阶段承载，不新增第三张图。
+- 如果需要表达工作流程，用 `features.webp` 的 3 个结果阶段承载，不新增第三张图。
 
 ### Codex Image Gen / gpt-image-2 方式
 
@@ -313,9 +335,9 @@ templates/features.html
 不适合 Image Gen 的内容：
 
 - 精确流程图。
-- 大量中文文字。
+- 大量中文文字或多段说明。
 - 命令、版本、表格。
-- 必须逐字准确的 UI 图。
+- 必须逐字准确的长文或 UI 图。
 
 推荐 prompt 结构：
 
@@ -329,23 +351,23 @@ Texture and lighting: #050505 deep black background, subtle paper grain, shallow
 Palette: white, gray, warm gold only
 Composition: one strong visual idea, restrained, spacious, no dense UI
 Quality bar: 10k-star designer portfolio quality
-Text policy: no body text inside the image; at most one short title only when necessary
+Text policy: include only high-value name-card text. Use the exact project name, one short positioning line, and optional 1-3 short labels. No paragraphs, commands, tables, tiny captions, or decorative text.
 Avoid: emoji, clutter, fake interface text, tiny labels, generic gradients, bright neon, overdesigned dashboards
 ```
 
-如果 Image Gen 不支持、无法调用、或输出出现错误文字/风格偏差，退回 HTML to PNG 兜底流程。
+如果 Image Gen 不支持、无法调用、或输出出现错误文字/风格偏差，先用一个更短的文字 prompt 重试一次；如果仍不准，再退回 HTML to PNG 兜底流程承载精确文字。
 
-### 图片压缩
+### 图片轻量化
 
-所有生成图片都必须压缩后再交付。
+README 展示图片默认使用 WebP。WebP 通常比 PNG 更适合 README 加载；PNG 只作为 HTML 截图兜底的中间产物、透明图或需要无损保存时使用。
 
 默认命令：
 
 ```bash
-npm run compress
+npm run webp
 ```
 
-如果项目没有压缩脚本，使用可用工具中最简单的一种：`pngquant`、`oxipng`、`sips`，或保留原图并明确说明压缩工具不可用。不要为了压缩引入重型依赖。
+如果项目没有 WebP 转换脚本，优先使用 `cwebp`、`sips` 或可用的轻量工具。不要为了转换引入重型依赖。无法转换时再保留 PNG，并说明原因。
 
 ### 视觉检查
 
@@ -354,6 +376,8 @@ npm run compress
 - 缩小到 GitHub README 显示宽度后仍能读。
 - 一张图只讲一个重点。
 - 没有小字堆叠。
+- 项目名和定位句一眼可见。
+- 图中文字没有拼写错误、乱码或伪文字。
 - 没有过度装饰。
 - 视觉风格和项目故事一致。
 - Image Gen 图没有错误文字或多余水印。
@@ -372,7 +396,7 @@ npm run compress
 
 **一句话价值主张**
 
-<img src="assets/banner.png" alt="[项目名] — [价值主张]" width="100%">
+<img src="assets/banner.webp" alt="[项目名] — [价值主张]" width="100%">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
@@ -390,7 +414,7 @@ npm run compress
 
 ## 你会得到什么
 
-<img src="assets/features.png" alt="[3 个核心能力]" width="100%">
+<img src="assets/features.webp" alt="[3 个核心能力]" width="100%">
 
 ## 工作方式
 
@@ -570,11 +594,11 @@ gh repo edit OWNER/REPO --remove-topic old-topic --add-topic new-topic
 ```bash
 node --version
 npm run showcase
-file assets/banner.png assets/features.png
+file assets/banner.webp assets/features.webp
 git status --short
 ```
 
-如果改了模板或实际图片，必须重新生成 PNG 并打开检查。
+如果改了模板或实际图片，必须重新生成 WebP 并打开检查。
 
 最终汇报只说清楚：
 
